@@ -8,3 +8,9 @@ div img{
     height: 50em;
     object-fit: contain;
 }
+
+@media only screen and (max-width:800px){
+    div img{
+        width: 100%;      
+    }
+}
