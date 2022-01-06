@@ -1,7 +1,9 @@
 {% extends 'main.html' %}
+{%load static %}
+
 {%block title%}Forum{%endblock%}
 {%block head%}
-<link rel='stylesheet' href='../../static/css/styles.css'>
+<link rel='stylesheet' href="{% static 'css/forum.styles.css'%}">
 {%endblock%}
 
 {%block content%}
