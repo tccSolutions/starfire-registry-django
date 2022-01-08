@@ -31,7 +31,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
@@ -48,7 +48,7 @@
             </div>
         </div>
     </nav>
-    <div class='page-content'>
+    <div class='page-content conatiner-fluid'>
         <!-- Dynamic Content -->
         {%block content%}
         {%endblock%}
@@ -63,7 +63,10 @@
         crossorigin="anonymous"></script>
 </body>
 <footer>
-    <h5>Copyright © 2022 TCCS.TECH</h5>
+    <div class="container-fluid text-align-center">
+        <h5>Copyright © 2022 TCCS.TECH</h5>
+    </div>
+    
 </footer>
 
 </html>
