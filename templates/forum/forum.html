@@ -3,20 +3,38 @@
 
 {%block title%}Forum{%endblock%}
 {%block head%}
-<link rel='stylesheet' href="{% static 'css/forum.styles.css'%}">
+<link rel='stylesheet' href="{% static 'forum/css/forum.styles.css'%}">
 {%endblock%}
 
 {%block content%}
-
+<!-- Add Post Modal -->
+<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addPostModalTitle">Create a Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+          {%csrf_token%}
+          {{post_form.as_p}}
+          <input type="submit" value="Create"/>
+        </form>
+       
+      </div>     
+    </div>
+  </div>
+</div>
 
 <div class='container-fluid row'>
   <!-- Left Bar -->
-  <div class='col-1 d-none d-xl-flex bg-white '>
-    <h4>Left Bar</h4>
+  <div class='col-2 d-none d-xl-flex bg-white '>
+   
   </div>
 
   <!-- Main Content -->
-  <div class='container mb-5 col-md-12 col-xl-9'>
+  <div class='container mb-5 col-md-12 col-xl-8'>
     <!-- Header -->
     <div class="container mb-5">
       <div class="row">
@@ -39,18 +57,28 @@
     </form>
     <!-- Forum Posts -->
     <div class="d-flex flex-column container-fluid align-items-center">
+      <!-- Create Post BTN -->
       <div class="col-12 mt-2">
-        <button class="btn btn-dark">Create Post</button>
+        <buttontype="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addPostModal">Create Post</buttontype=>
       </div>
+      <!-- Posts -->
+      {%if posts|length > 0%}
       {% for post in posts %}
       <div class='card bg-dark text-light col-12 my-2'>
         <div class=" d-flex flex-column container">
           <h2 class='mx-auto'>{{post.title}}</h2>
-          <h5>{{post.body}}</h5>
-          <h6 class='ms-auto badge'>{{post.date}}</h6>
+          <sub class='text-center mb-3'>Created: {{post.date_created}}</sub>
+          <h5>{{post.body|safe|truncatechars:150}}...</h5>
+          <a href="{% url 'post' post.id post.title %}">Read More</a>
+          <h6 class='ms-auto badge'>Updated: {{post.date_updated}}</h6>
         </div>
       </div>
       {%endfor%}
+      {%else%}
+        <div>
+          <h3>Currently No Posts To Display</h3>
+        </div>
+        {%endif%}
     </div>
   </div>
 </div>

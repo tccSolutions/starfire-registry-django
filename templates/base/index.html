@@ -4,12 +4,15 @@
 {%block title%}Homepage{%endblock%}
 
 {%block head%}
-<link rel="stylesheet" href="{% static 'css/base.styles.css' %}">
+
 {%endblock%}
 
 {%block content%}
-<div>
-    <img src="{% static 'images/Oldsmobile_logo_PNG1.png' %}" alt="car">
+<div class="container-fluid position-absolute top-50 start-50 translate-middle ">
+    <div class='row justify-content-center'>
+        <img src="{% static 'images/Oldsmobile_logo_PNG1.png' %}" alt="car" class='col' style='max-width: 50em;'>
+    </div>
 </div>
+
 
 {%endblock%}

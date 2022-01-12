@@ -21,7 +21,7 @@
     <title>{%block title%}{%endblock%} Starfire</title>
 </head>
 
-<body>
+<body class='d-flex flex-column min-vh-100'>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
@@ -45,28 +45,37 @@
                         <a class="nav-link" href="#">Registry</a>
                     </li>
                 </ul>
+                <div class="nav-item">
+                    <a class='btn btn-success na-link' href="{% url 'sign_in' %}">Sign In</a>
+                </div>
             </div>
+            
         </div>
     </nav>
     <div class='page-content conatiner-fluid'>
         <!-- Dynamic Content -->
         {%block content%}
-        {%endblock%}
+
+        {%endblock%}        
     </div>
 
-
+    <!-- Footer -->    
+    <footer class='mt-auto'>
+        <div class="container-fluid text-align-center ">
+            <h5>Copyright © 2022 TCCS.TECH</h5>
+        </div>
+    </footer>
+                
+    
 
     <!-- Bootstrap Script -->
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+      
+
 </body>
-<footer>
-    <div class="container-fluid text-align-center">
-        <h5>Copyright © 2022 TCCS.TECH</h5>
-    </div>
-    
-</footer>
+
 
 </html>
